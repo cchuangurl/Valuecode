@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="/javascripts/jquery-3.4.1.js"></script>
+<style type="text/css">
+body {
+  background-color: #d6d6d3;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+     flex-direction:column;
+	 justify-content: flex-start;
+     align-items:center;
+  	margin: 0;
+}
+</style>
+    <title>連城訣功能選單</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+      <br>
+   <h2>請點選主功能選項</h2>
+        <table class="menu">
+        <tr height="60px">
+        <td width="300px">
+        <form  action="/api/history/inputpage" method="get">
+        <input type="hidden" name="statusreport" value="由功能目錄頁輸入歷史訣按鈕進入本頁">
+        <input type="submit" value="輸入歷史訣" class="btn btn-info">        
+        </form>      
+        </td>
+        <td  width="300px">
+          <form  action="/api/history" method="get">
+            <input type="hidden" name="statusreport" value="由功能目錄頁列出歷史訣按鈕進入本頁">
+            <input type="submit" value="列出歷史訣" class="btn btn-info">        
+            </form> 
+        </td>
+        <td  width="300px">
+                  <form  action="/api/turninfo/inputpage" method="get">
+              <input type="hidden" name="statusreport" value="由功能目錄頁輸入歷史訣按鈕進入本頁">
+              <input type="submit" value="輸入期別資訊" class="btn btn-info">        
+              </form>
+        </td>
+        <td  width="300px">
+          <form  action="/api/turninfo" method="get">
+            <input type="hidden" name="statusreport" value="由功能目錄頁列出歷史訣按鈕進入本頁">
+            <input type="submit" value="列出期別資訊" class="btn btn-info">        
+            </form> 
+        </td>
+        </tr>
+        
+        <tr height="100px">
+          <td  width="300px">
+            <form  action="/api/parameter/inputpage" method="get">
+        <input type="hidden" name="statusreport" value="由功能目錄頁輸入策略組按鈕進入本頁">
+        <input type="submit" value="輸入策略組" class="btn btn-info">        
+        </form>
+  </td>
+        <td>
+        <form  action="/api/parameter" method="get">
+        <input type="hidden" name="statusreport" value="由功能目錄頁策略調整按鈕進入本頁">
+        <input type="submit" value="策略調整" class="btn btn-info">
+        </form>
+        </td>
+      </tr>
+        
+      <tr height="100px">
+                
+        <td>
+        <form  action="/api/guess/calculate" method="get">
+        <input type="hidden" name="statusreport" value="由各常用策略均運算進入本頁"> 
+        <input type="submit" value="運算單期新策略套各組訣" class="btn btn-info">        
+        </form>
+        </td>
+        <td>
+          <form  action="/api/guess_middle/calc_middle" method="get">
+            <input type="hidden" name="statusreport" value="由功能目錄頁運算各期中間訣按鈕進入本頁">   
+          <input type="submit" value="運算固定策略中間訣" class="btn btn-info">        
+          </form>
+          </td>    
+        <td>
+          <form  action="" method="get">
+          <input type="hidden" name="statusreport" value="由功能目錄頁報表處理按鈕進入本頁">
+          <input type="submit" value="報表處理" class="btn btn-info">
+          </form>
+          </td>
+        <td>
+        <form  action="/api/test/partcode" method="get">
+        <input type="submit" value="測試片段程式" class="btn btn-info">        
+        </form>
+        </td>
+        <td>
+        
+        </td>
+        </tr>
+        
+        <tr height="100px">
+        <td>
+        <form  action="/api/hit" method="get">
+        <input type="hidden" name="statusreport" value="由功能目錄頁對訣按鈕進入本頁">
+        <input type="submit" value="單期對訣" class="btn btn-info">
+        </form>
+        </td>
+        <td>
+          <form  action="/api/hit_middle" method="get">
+            <input type="hidden" name="statusreport" value="由功能目錄頁比對各期訣按鈕進入本頁">
+            <input type="submit" value="比對中間訣" class="btn btn-info" onclick="changemode()">        
+          </form>        
+          </td>
+        
+        <td>
+        <form  action="/api/perform2" method="get">
+        <input type="hidden" name="statusreport" value="由功能目錄頁績效分析按鈕進入本頁">
+        <input type="submit" value="績效分析" class="btn btn-info">
+        </form>
+        </td>
+        <td>
+          <form  action="/api/perform0" method="get">
+          <input type="hidden" name="statusreport" value="由功能目錄頁績效分析按鈕進入本頁">
+          <input type="submit" value="中間訣績效分析" class="btn btn-info">
+          </form>
+          </td>
+        </tr>
+        
+        </table>
+        </fieldset>
+  </body>
+</html>

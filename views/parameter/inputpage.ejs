@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="/javascripts/jquery-3.4.1.js"></script>
+<style type="text/css">
+body {
+  background-color: #d6d6d3;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+     flex-direction:column;
+	 justify-content: flex-start;
+     align-items:center;
+  	margin: 0;
+}
+</style>
+    <title>單筆輸入策略組<</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+      <br>
+      <%= statusreport %>
+   <h2>請輸入各項資料</h2>
+        <form  action="/api/parameter/" method="post">
+        <input type="hidden" name="statusreport" value="由單筆輸入策略組<進入本頁">
+        流水期數:<input type="text" name="a05waterno" required><br>
+        拉力期長:<input type="text" name="a10pull"><br>
+        切除期數:<input type="text" name="a15cutter" ><br>
+        事後驗算期數:<input type="text" name="a20posterior" ><br>
+        方法模別１:<input type="text" name="a25method1" ><br>       
+        方法模別２:<input type="text" name="a30method2" ><br>
+        方法模別３:<input type="text" name="a35method3"><br>
+        起碼績效標準:<input type="text" name="a40hurdle"><br>
+        每次績效增量:<input type="text" name="a45increment"><br>
+        停止運算標準:<input type="text" name="a50ceiling" ><br>
+        <input type="submit" value="確定送出" class="btn btn-info">        
+        </form>     
+        
+  </body>
+</html>

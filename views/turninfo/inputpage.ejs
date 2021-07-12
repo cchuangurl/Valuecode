@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="/javascripts/jquery-3.4.1.js"></script>
+<style type="text/css">
+body {
+  background-color: #d6d6d3;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+     flex-direction:column;
+	 justify-content: flex-start;
+     align-items:center;
+  	margin: 0;
+}
+</style>
+    <title>單筆輸入期別資訊<</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+      <br>
+      <%= statusreport %>
+   <h2>請輸入各項資料</h2>
+        <form  action="/api/turninfo/" method="post">
+        <input type="hidden" name="statusreport" value="由單筆輸入期別資訊<進入本頁">
+        sixtpye:<input type="text" name="a05sixtype"><br>
+        period:<input type="text" name="a10period" required><br>
+        date:<input type="text" name="a15date"><br>
+        machine:<input type="text" name="a20machine"><br>
+        ballset:<input type="text" name="a25ballset"><br>       
+        direction:<input type="text" name="a30direction"><br>
+        waterno:<input type="text" name="a35waterno"  required><br>
+        <input type="submit" value="確定送出" class="btn btn-info">        
+        </form>      
+        
+  </body>
+</html>

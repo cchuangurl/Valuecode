@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="/javascripts/jquery-3.4.1.js"></script>
+<style type="text/css">
+body {
+  background-color: #d6d6d3;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+     flex-direction:column;
+	 justify-content: flex-start;
+     align-items:center;
+  	margin: 0;
+}
+</style>
+    <title>單筆輸入歷史訣</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+      <br>
+      <%= statusreport %>
+   <h2>請輸入各項資料</h2>
+        <form  action="/api/history/" method="post">
+        <input type="hidden" name="statusreport" value="由單筆輸入歷史訣進入本頁">
+        waterno:<input type="text" name="a10waterno" required><br>
+        code1:<input type="text" name="a15code1" required><br>
+        code2:<input type="text" name="a20code2" required><br>
+        code3:<input type="text" name="a25code3" required><br>       
+        code4:<input type="text" name="a30code4" required><br>
+        code5:<input type="text" name="a35code5" required><br>
+        code6:<input type="text" name="a40code6" required><br>
+        extracode:<input type="text" name="a45extracode" required><br>
+        <input type="submit" value="確定送出" class="btn btn-info">        
+        </form>      
+        
+  </body>
+</html>

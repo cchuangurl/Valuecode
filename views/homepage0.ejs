@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="../public/javascripts/jquery-3.4.1.js"></script>
+<style type="text/css">
+body {
+  background-color: #d6d6d3;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+     flex-direction:column;
+	 justify-content: flex-start;
+     align-items:center;
+  	margin: 0;
+}
+</style>
+    <title>連城訣功能選單</title>
+    <link rel='stylesheet' href='../public/stylesheets/style.css' />
+  </head>
+  <body>
+    <fieldset>
+        <caption><h2>請點選主功能選項</h2></caption>
+        <table class="menu">
+        <tr height="60px">
+        <td width="300px">
+        <c:url var="readhistoryUrl" value="/controlmenu/readhistory" />
+        <form:form  action="${readhistoryUrl}" method="get">
+        <input type="hidden" name="statusreport" value="由功能目錄頁輸入歷史訣按鈕進入本頁">
+        <input type="submit" value="輸入歷史訣" class="btn btn-info">        
+        </form:form>      
+        </td>
+        <td  width="300px">
+        </td>
+        <td  width="300px">
+        </td>
+        </tr>
+        
+        <tr height="100px">
+        <td>
+        <c:url var="listdlparaUrl" value="/controldlpara/listdlpara" />
+        <form:form  action="${listdlparaUrl}" method="get">
+        <input type="hidden" name="statusreport" value="由功能目錄頁策略調整按鈕進入本頁">
+        <input type="submit" value="策略調整" class="btn btn-info">
+        </form:form>
+        </td>
+        <td>
+        <c:url var="onecalcUrl" value="/controldlguess/onecalc" />
+        <form:form  action="${onecalcUrl}" method="get">
+        <input type="submit" value="單次運算" class="btn btn-info">        
+        </form:form>
+        </td>
+        <td>
+        
+        </td>
+        </tr>
+        
+        <tr height="100px">
+        <td>
+        <c:url var="suitecalcUrl" value="/controldlguesssuite/suitecalc" />
+        <form:form  action="${suitecalcUrl}" method="get">
+        <input type="submit" value="各常用策略均運算" class="btn btn-info">        
+        </form:form>
+        <div id="calcmode"></div>
+        </td>
+        <td>
+        <c:url var="backgroundcalcUrl" value="/controldlguessShift/backgroundcalc" />
+        <form:form  action="${backgroundcalcUrl}" method="get">
+        <input type="submit" value="背景運算" class="btn btn-info" onclick="changemode()">        
+        </form:form>
+        <div id="calcmode"></div>
+        </td>
+        <td>
+        <c:url var="stopcalcUrl" value="/controldlstop/stopcalc" />
+        <form:form  action="${stopcalcUrl}" method="get">
+        <input type="submit" value="停止運算" class="btn btn-info">        
+        </form:form>
+        </td>
+        <td>
+        
+        </td>
+        </tr>
+        
+        <tr height="100px">
+        <td>
+        <c:url var="checkoutcomeUrl" value="/controldlhit/checkoutcome" />
+        <form:form  action="${checkoutcomeUrl}" method="get">
+        <input type="hidden" name="statusreport" value="由功能目錄頁對訣按鈕進入本頁">
+        <input type="submit" value="對訣" class="btn btn-info">
+        </form:form>
+        </td>
+        <td>
+        <c:url var="perfomanceUrl" value="/controldlperform/calcdlperform" />
+        <form:form  action="${perfomanceUrl}" method="get">
+        <input type="hidden" name="statusreport" value="由功能目錄頁績效分析按鈕進入本頁">
+        <input type="submit" value="績效分析" class="btn btn-info">
+        </form:form>
+        </td>
+        <td>
+        <c:url var="reporterUrl" value="/controlmenu/reporter" />
+        <form:form  action="${reporterUrl}" method="get">
+        <input type="hidden" name="statusreport" value="由功能目錄頁報表處理按鈕進入本頁">
+        <input type="submit" value="報表處理" class="btn btn-info">
+        </form:form>
+        </td>
+        </tr>
+        
+        </table>
+        </fieldset>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="/javascripts/jquery-3.4.1.js"></script>
+<style type="text/css">
+body {
+  background-color: #d6d6d3;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+     flex-direction:column;
+	 justify-content: flex-start;
+     align-items:center;
+  	margin: 0;
+}
+</style>
+
+  <title>各期對中清單</title>
+  </head>
+  <body>
+  <table>
+  <tr>
+  <h4><%= statusreport %></h4>
+  </tr>
+  <tr>
+    <td>
+      <form  action="/api/hit/checkassign" method="get" >
+     指定核對期別：<input type="text" name="assign" required>
+     <input type="hidden" name="statusreport" value="對指定期別完成">
+     <input type="submit" value="對指定期別">
+     </form>
+     </td>
+    <td>
+  <a href="/">回主功能選單</a>
+  </td>
+  </tr>    
+  </table>
+  <div id="pageindex"></div>
+      <table border="1" class="table table-striped">
+          <thead>
+          <tr>
+              <th>ID</th>
+              <th>對應猜值ID</th>
+              <th>流水期別</th>
+              <th>猜值組別</th>                        
+              <th>猜中數</th>
+              <th>有效中數</th>              
+              <!--             <th>特別註記</th>                   -->
+              
+          </tr>
+          </thead>
+          <tbody id="hitpages">
+          <% for(let hit of hitlist) { %>
+              <tr>
+                <td><%= hit._id %></td>
+                <td><%= hit.a05guess_ids %></td>
+                <td><%= hit.a10waterno %></td>
+                <td><%=hit.a25ans_set %></td>                  
+                  <td><%= hit.a15no_hit %></td>
+                  <td><%= hit.a20effect_hit %></td>             
+  <!--                 <td>${hit.a99footnote}</td>                 -->
+                  <td>
+                   <form  action="/api/hit/delete/<%= hit._id %>" method="get" >
+              <input type="submit" value="刪除">
+              </form>
+              <% } %>
+                  </td>
+              </tr>
+          </c:forEach>
+          </tbody>
+      </table>
+  </body>
+</html>

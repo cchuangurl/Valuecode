@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="/javascripts/jquery-3.4.1.js"></script>
+<style type="text/css">
+body {
+  background-color: #d6d6d3;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+     flex-direction:column;
+	 justify-content: flex-start;
+     align-items:center;
+  	margin: 0;
+}
+</style>
+
+  <title>各期猜碼清單</title>
+  </head>
+  <body>
+  <table>
+  <tr>
+  <h4><%= statusreport %></h4>
+  </tr>
+  <tr>
+  <a href="/">回主功能選單</a>
+  </td>
+  </tr>    
+  </table>
+  <div id="pageindex"></div>
+      <table border="1" class="table table-striped">
+          <thead>
+          <tr>
+              <th>ID</th>
+              <th>猜值組別</th>
+              <th>流水期數</th>
+              <th>碼１</th>            
+              <th>碼２</th>
+              <th>碼３</th>
+              <th>碼４</th>
+              <th>碼５</th>
+              <th>碼６</th>
+              <th>特別碼</th>
+              <th>過程平均值</th>
+              <th>過程標準差</th>        
+  <!--             <th>特別註記</th>                   -->
+              
+          </tr>
+          </thead>
+          <tbody id="guesspages">
+          <% for(let guess of guesslist) { %>
+              <tr>
+                <td><%= guess._id %></td>
+                <td><%= guess.a10ans_set %></td>
+                <td><%= guess.a15waterno %></td>                  
+                  <td><%= guess.a20guess1 %></td>
+                  <td><%= guess.a25guess2 %></td>
+             <td><%= guess.a30guess3 %></td>
+             <td><%= guess.a35guess4 %></td>
+             <td><%= guess.a40guess5 %></td>
+             <td><%= guess.a45guess6 %></td>
+             <td><%= guess.a50guessextra %></td>
+             <td><%= guess.a55guessxbar %></td>
+             <td><%= guess.a60guessstd %></td>                         
+  <!--                 <td>${guess.a99footnote}</td>                 -->
+              <td>
+              <form  action="/api/guess_middle/<%= guess._id %>" method="get" >
+ <!--               <input type="hidden" name="statusreport" value="由計算猜值進入本頁">  -->
+              <input type="submit" value="编輯">
+              </form>
+                 </td>
+                  <td>
+                   <form  action="/api/guess_middle/delete/<%= guess._id %>" method="get" >
+              <input type="submit" value="刪除">
+              </form>
+              <% } %>
+                  </td>
+              </tr>
+          </c:forEach>
+          </tbody>
+      </table>
+  </body>
+</html>

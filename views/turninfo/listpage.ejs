@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="/javascripts/jquery-3.4.1.js"></script>
+<style type="text/css">
+body {
+  background-color: #d6d6d3;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+     flex-direction:column;
+	 justify-content: flex-start;
+     align-items:center;
+  	margin: 0;
+}
+</style>
+
+  <title>各期別清單</title>
+  </head>
+  <body>
+  <table>
+  <tr>
+  <h4><%= statusreport %></h4>
+  </tr>
+  <tr>
+  <td>
+  <form  action="/api/turninfo/inputpage" method="get" >
+  <input type="hidden" name="statusreport" value="單筆手動新增">
+  <input type="submit" value="單筆手動新增">
+  </form> 
+  </td>
+  <td>
+   <form  action="" method="get" >
+  <input type="submit" value="單筆網路擷取">
+  </form>
+  </td>
+  <td>
+    <form  action="/api/turninfo/batchinput" method="get" >
+   資料主檔名：<input type="text" name="datafile" required">
+   <input type="hidden" name="statusreport" value="由批次新增進入本頁">
+   <input type="submit" value="批次新增">
+   </form>
+   </td>
+   
+   <td>
+   （需先備好csv檔案）
+   </td>
+  <td>
+  <a href="/">回主功能選單</a>
+  </td>
+  </tr>    
+  </table>
+  <div id="pageindex"></div>
+      <table border="1" class="table table-striped">
+          <thead>
+          <tr>
+              <th>ID</th>
+              <th>種類</th>
+              <th>原期別</th>                          
+              <th>日期</th>
+              <th>機台</th>
+              <th>球組</th>
+              <th>出球方向</th>
+              <th>期別序號</th>
+              <!--             <th>特別註記</th>                   -->
+              
+          </tr>
+          </thead>
+          <tbody id="turninfopages">
+          <% for(let turninfo of turninfolist) { %>
+              <tr>
+                <td><%= turninfo._id %></td>
+                <td><%= turninfo.a05sixtype %></td>
+                <td><%= turninfo.a10period %></td>                  
+                  <td><%= turninfo.a15date %></td>
+                  <td><%= turninfo.a20machine %></td>
+             <td><%= turninfo.a25ballset %></td>
+             <td><%= turninfo.a30direction %></td>
+             <td><%= turninfo.a35waterno %></td>                     
+  <!--                 <td>${turninfo.a99footnote}</td>                 -->
+              <td>
+              <form  action="/api/turninfo/<%= turninfo._id %>" method="get" >
+ <!--               <input type="hidden" name="statusreport" value="歷史訣清單頁進入本頁">  -->
+              <input type="submit" value="编輯">
+              </form>
+                 </td>
+                  <td>
+                   <form  action="/api/turninfo/delete/<%= turninfo._id %>" method="get" >
+              <input type="submit" value="刪除">
+              </form>
+              <% } %>
+                  </td>
+              </tr>
+          </c:forEach>
+          </tbody>
+      </table>
+  </body>
+</html>

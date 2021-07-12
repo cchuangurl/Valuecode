@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="/javascripts/jquery-3.4.1.js"></script>
+<style type="text/css">
+body {
+  background-color: #d6d6d3;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+     flex-direction:column;
+	 justify-content: flex-start;
+     align-items:center;
+  	margin: 0;
+}
+</style>
+
+  <title>各策略組清單</title>
+  </head>
+  <body>
+  <table>
+  <tr>
+  <h4><%= statusreport %></h4>
+  </tr>
+  <tr>
+  <td>
+  <form  action="/api/parameter/inputpage" method="get" >
+  <input type="hidden" name="statusreport" value="單筆手動新增">
+  <input type="submit" value="單筆手動新增">
+  </form> 
+  </td>
+  <td>
+  <a href="/">回主功能選單</a>
+  </td>
+  </tr>    
+  </table>
+  <div id="pageindex"></div>
+      <table border="1" class="table table-striped">
+          <thead>
+          <tr>
+              <th>ID</th>
+              <th>流水期數</th>                          
+              <th>切除期數</th>
+              <th>方法模別１</th>
+              <th>方法模別２</th>
+              <th>方法模別３</th>
+              <th>起碼績效標準</th>
+              <th>每次績效增量</th>
+              <th>停止運算標準</th>
+              <!--             <th>特別註記</th>                   -->
+              
+          </tr>
+          </thead>
+          <tbody id="parameterpages">
+          <% for(let parameter of parameterlist) { %>
+              <tr>
+                <td><%= parameter._id %></td>
+                <td><%= parameter.a05waterno %></td>                                  
+                  <td><%= parameter.a15cutter %></td>                 
+             <td><%= parameter.a25method1 %></td>
+             <td><%= parameter.a30method2 %></td>
+             <td><%= parameter.a35method3 %></td>
+             <td><%= parameter.a40hurdle %></td>
+             <td><%= parameter.a45increment %></td>
+             <td><%= parameter.a50ceiling %></td>                   
+  <!--                 <td>${parameter.a99footnote}</td>                 -->
+              <td>
+              <form  action="/api/parameter/<%= parameter._id %>" method="get" >
+ <!--               <input type="hidden" name="statusreport" value="由策略組清單頁進入本頁">  -->
+              <input type="submit" value="编輯">
+              </form>
+                 </td>
+                  <td>
+                   <form  action="/api/parameter/delete/<%= parameter._id %>" method="get" >
+              <input type="submit" value="刪除">
+              </form>
+              <% } %>
+                  </td>
+              </tr>
+          </c:forEach>
+          </tbody>
+      </table>
+  </body>
+</html>

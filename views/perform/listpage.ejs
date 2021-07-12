@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="/javascripts/jquery-3.4.1.js"></script>
+<style type="text/css">
+body {
+  background-color: #d6d6d3;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+     flex-direction:column;
+	 justify-content: flex-start;
+     align-items:center;
+  	margin: 0;
+}
+</style>
+
+  <title>各期績效分析清單</title>
+  </head>
+  <body>
+  <table>
+  <tr>
+  <h4><%= statusreport %></h4>
+  </tr>
+  <tr>
+    <td>
+      <form  action="/api/perform/checkassign" method="get" >
+     ：<input type="text" name="assign" required>
+     <input type="hidden" name="statusreport" value="分析完成">
+     <input type="submit" value="分析">
+     </form>
+     </td>
+    <td>
+  <a href="/">回主功能選單</a>
+  </td>
+  </tr>    
+  </table>
+  <div id="pageindex"></div>
+      <table border="1" class="table table-striped">
+          <thead>
+          <tr>
+              <th>guess ID</th>
+              <th>流水期別</th>
+              <th>策略1</th> 
+              <th>策略2</th>
+              <th>策略3</th>                                    
+              <th>組別</th>
+              <th>猜中數</th>
+              <th>有效猜中數</th>
+              <th>平均猜中數</th>
+              <th>獎金期望值</th>                        
+              <!--             <th>特別註記</th>                   -->
+              
+          </tr>
+          </thead>
+          <tbody id="performpages">
+          <% for(let perform of performlist) { %>
+              <tr>
+                <td><%= perform.a05guess_ids %></td>
+                <td><%= perform.a10waterno %></td>
+                <td><%= perform.a15sw1 %></td>                  
+                  <td><%= perform.a20sw2 %></td>
+                  <td><%= perform.a25sw3 %></td>
+                  <td><%= perform.a30ans_set %></td>
+                  <td><%= perform.a35hit %></td>
+                  <td><%= perform.a40effecthit %></td>
+                  <td><%= perform.a45hitmean %></td>
+                  <td><%= perform.a45expectaward %></td>            
+  <!--                 <td>${perform.a99footnote}</td>                 -->
+                  <td>
+                   <form  action="/api/perform/delete/<%= perform._id %>" method="get" >
+              <input type="submit" value="刪除">
+              </form>
+              <% } %>
+                  </td>
+              </tr>
+          </c:forEach>
+          </tbody>
+      </table>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="/javascripts/jquery-3.4.1.js"></script>
+<style type="text/css">
+body {
+  background-color: #d6d6d3;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+     flex-direction:column;
+	 justify-content: flex-start;
+     align-items:center;
+  	margin: 0;
+}
+</style>
+    <title>單筆輸入猜訣</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+      <br>
+      <%= statusreport %>
+   <h2>請輸入各項資料</h2>
+        <form  action="/api/guess/" method="post">
+        <input type="hidden" name="statusreport" value="由單筆輸入猜訣進入本頁">
+        waterno:<input type="text" name="a15waterno" required><br>
+        guess1:<input type="text" name="a20guess1" required><br>
+        guess2:<input type="text" name="a25guess2" required><br>
+        guess3:<input type="text" name="a30guess3" required><br>       
+        guess4:<input type="text" name="a35guess4" required><br>
+        guess5:<input type="text" name="a40guess5" required><br>
+        guess6:<input type="text" name="a45guess6" required><br>
+        guessextra:<input type="text" name="a50guessextra" required><br>
+        <input type="submit" value="確定送出" class="btn btn-info">        
+        </form>      
+        
+  </body>
+</html>

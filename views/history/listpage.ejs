@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="/javascripts/jquery-3.4.1.js"></script>
+<style type="text/css">
+body {
+  background-color: #d6d6d3;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+     flex-direction:column;
+	 justify-content: flex-start;
+     align-items:center;
+  	margin: 0;
+}
+</style>
+
+  <title>既有開出號碼清單</title>
+  </head>
+  <body>
+  <table>
+  <tr>
+  <h4><%= statusreport %></h4>
+  </tr>
+  <tr>
+  <td>
+  <form  action="/api/history/inputpage" method="get" >
+  <input type="hidden" name="statusreport" value="單筆手動新增">
+  <input type="submit" value="單筆手動新增">
+  </form> 
+  </td>
+  <td>
+   <form  action="/api/history/getfromweb" method="get" >
+    <input type="hidden" name="statusreport" value="由單筆網路擷取進入本頁"> 
+  <input type="submit" value="單筆網路擷取">
+  </form>
+  </td>
+  <td>
+    <form  action="/api/history/batchinput" method="get" >
+   資料主檔名：<input type="text" name="datafile" required>
+   <input type="hidden" name="statusreport" value="由批次新增進入本頁">
+   <input type="submit" value="批次新增">
+   </form>
+   </td>
+  
+  <td>
+  （需先備好檔案）
+  </td>
+  <td>
+  <a href="/">回主功能選單</a>
+  </td>
+  </tr>    
+  </table>
+  <div id="pageindex"></div>
+      <table border="1" class="table table-striped">
+          <thead>
+          <tr>
+              <th>ID</th>
+              <th>原期別ID</th>
+              <th>流水期數</th>
+              <th>碼１</th>            
+              <th>碼２</th>
+              <th>碼３</th>
+              <th>碼４</th>
+              <th>碼５</th>
+              <th>碼６</th>
+              <th>特別碼</th>          
+  <!--             <th>特別註記</th>                   -->
+              
+          </tr>
+          </thead>
+          <tbody id="historypages">
+          <% for(let history of historylist) { %>
+              <tr>
+                <td><%= history._id %></td>
+                <td><%= history.a05turninfo_ids %></td>
+                <td><%= history.a10waterno %></td>                  
+                  <td><%= history.a15code1 %></td>
+                  <td><%= history.a20code2 %></td>
+             <td><%= history.a25code3 %></td>
+             <td><%= history.a30code4 %></td>
+             <td><%= history.a35code5 %></td>
+             <td><%= history.a40code6 %></td>
+             <td><%= history.a45extracode %></td>              
+  <!--                 <td>${history.a99footnote}</td>                 -->
+              <td>
+              <form  action="/api/history/<%= history._id %>" method="get" >
+ <!--               <input type="hidden" name="statusreport" value="由歷史訣清單頁進入本頁">  -->
+              <input type="submit" value="编輯">
+              </form>
+                 </td>
+                  <td>
+                   <form  action="/api/history/delete/<%= history._id %>" method="get" >
+              <input type="submit" value="刪除">
+              </form>
+              <% } %>
+                  </td>
+              </tr>
+          </c:forEach>
+          </tbody>
+      </table>
+  </body>
+</html>
